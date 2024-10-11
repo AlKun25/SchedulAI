@@ -14,7 +14,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.21.1"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "pg": "^8.13.0",
+    "winston": "^3.15.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
