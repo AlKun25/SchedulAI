@@ -1,4 +1,4 @@
-# SchedulAI : AI-Powered Task Scheduling App
+# SchedulAI: AI-Powered Task Scheduling App
 
 ## Project Overview
 
@@ -10,43 +10,84 @@ This project is an open-source, AI-powered task scheduling application with a we
 - Backend: Node.js with Express
 - Database: PostgreSQL
 - AI/ML: TensorFlow.js for client-side ML, Python with Flask for server-side ML
+- Containerization: Docker and Docker Compose
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or later)
-- npm (v6 or later)
-- Docker (for running PostgreSQL)
+- Docker and Docker Compose
+- Git
 
-### Installation
+### Installation and Setup with Docker
 
 1. Clone the repository
+
    ```
    git clone https://github.com/your-username/ai-task-scheduler.git
    cd ai-task-scheduler
    ```
 
-2. Set up the frontend
+2. Build and start the Docker containers
+
    ```
-   cd frontend
-   npm install
+   docker compose up --build -d
    ```
 
-3. Set up the backend
+3. Access the application
+
+   - Frontend: http://localhost:8080
+   - Backend API: http://localhost:3000
+
+4. To stop the containers
    ```
-   cd ../backend
-   npm install
+   docker compose down
    ```
 
-4. Start the development servers
-   ```
-   # In the frontend directory
-   npm run serve
+### Development Workflow
 
-   # In the backend directory
-   npm run dev
+- The source code for both frontend and backend is mounted as volumes in the Docker containers. This means you can make changes to the code on your host machine, and the changes will be reflected in the running containers.
+
+- To view logs from the containers:
+
+  ```
+  docker compose logs
+  ```
+
+- To rebuild the containers after making changes to the Dockerfiles or docker-compose.yml:
+  ```
+  docker compose up --build -d
+  ```
+
+### Troubleshooting
+
+If you encounter issues with the Docker setup:
+
+1. Check the logs for each service:
+
    ```
+   docker compose logs frontend
+   docker compose logs backend
+   docker compose logs db
+   ```
+
+2. Ensure all necessary ports are free on your host machine (8080 for frontend, 3000 for backend).
+
+3. If changes aren't reflecting, try rebuilding the containers.
+
+## Project Structure
+
+```
+ai-task-scheduler/
+├── frontend/
+│   ├── Dockerfile
+│   └── ... (Vue.js app files)
+├── backend/
+│   ├── Dockerfile
+│   └── ... (Node.js app files)
+├── docker-compose.yml
+└── README.md
+```
 
 ## Contributing
 
